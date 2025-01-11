@@ -80,7 +80,7 @@ C/
 │   └── test_IntegerArrayList.c
 └── README.md              # Project documentation 
 ```
-
+```
 ### C++
 C++/
 ├── include/               # Header files
@@ -92,12 +92,12 @@ C++/
 │   └── Queue.cpp
 │   └── Stack.cpp
 ├── tests/                 # Test cases
-│   └── test_ArrayList.cpp
+── test_ArrayList.cpp
 │   └── test_Queue.cpp
 │   └── test_Stack.cpp
 └── README.md              # Project documentation 
-
-
+```
+```
 ### Java
 java/
 ├── src/                   # Source code
