@@ -1,5 +1,5 @@
 // The arrayList will double in size when full, and halve in size when 1/4 full
-
+package src;
 public class ArrayList<E>{
     private Object[] array;
     private int size;

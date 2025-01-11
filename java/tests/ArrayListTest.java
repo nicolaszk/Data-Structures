@@ -1,4 +1,6 @@
-public class App{
+import src.ArrayList;
+
+public class ArrayListTest{
     public static void main(String[] args){
         // testing the arraylist methods
         ArrayList<Integer> list = new ArrayList<Integer>();

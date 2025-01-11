@@ -1,3 +1,4 @@
+package src;
 public class Stack <E>{ // array will double in size when full and halve when 1/4 full
     private Object[] stack;
     private int top;

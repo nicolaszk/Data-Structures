@@ -1,3 +1,4 @@
+package src;
 public class BinarySearchTree<E extends Comparable<E>>{
     private Node root;
     private class Node{
@@ -13,6 +14,7 @@ public class BinarySearchTree<E extends Comparable<E>>{
     public BinarySearchTree(){
         root = null;
     }
+    
     public void insert(E element){
         if(root == null){
             root = new Node(element);
@@ -83,6 +85,16 @@ public class BinarySearchTree<E extends Comparable<E>>{
             }
         }
     }
+    public boolean contains(E element){
+        Node current = root;
+        while(current != null){
+            if(element.compareTo(current.element) == 0) return true;
+            else if(element.compareTo(current.element) < 0) current = current.left;
+            else current = current.right;
+        }
+        return false; // didnt find the element
+    }
+    
     private Node findSuccessor(Node node){ // find the smallest node in the right subtree(inorder successor)
         Node successor = node.right;
         while(successor.left != null){

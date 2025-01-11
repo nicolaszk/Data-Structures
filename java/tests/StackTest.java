@@ -1,4 +1,6 @@
-public class App{
+import src.Stack;
+
+public class StackTest{
     public static void main(String[] args){
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i < 50; i++){ // testing pushing and resizing (growing)
