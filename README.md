@@ -5,7 +5,7 @@ Welcome to my **Data Structures Project**! 🎉 This project provides a simple i
 ## 🚀 Running the Program
 
 The original code is already compiled and ready to use. You just need to go to the folder of the language you want to run and execute the program with the commands provided below.
-The available data structures for now are:
+The available data structures for now are (work in progress):
 
 in C:
 ```bash
@@ -21,9 +21,9 @@ in C++:
 
 in Java:
 ```bash
-./ArrayList
-./Queue
-./Stack
+./ArrayListTest
+./BinarySearchTreeTest
+./StackTest
 ```
 
 ---
@@ -53,16 +53,16 @@ g++ -std=c++17 -o ArrayList tests/test_ArrayList.cpp src/ArrayList.cpp -I includ
 ```
 
 ### Java    
-for java, you should go to the folder of the data structure you want to run and compile the code you want to run like this:
+for java, you should go to the java folder and compile the code with:
 
 ```bash
-javac BinarySearchTree.java App.java
+javac -d . src/*.java tests/*.java
 ```
 
-then run the program with:
-
+then run the program you wish.
+for example:
 ```bash
-java -cp out IntegerArrayList
+java ArrayListTest
 ```
 
 ---
@@ -78,7 +78,37 @@ C/
 │   └── IntegerArrayList.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
-└── README.md              # Project documentation (you are here!)
+└── README.md              # Project documentation 
+```
+
+### C++
+C++/
+├── include/               # Header files
+│   └── ArrayList.h
+│   └── Queue.h
+│   └── Stack.h
+├── src/                   # Source code
+│   └── ArrayList.cpp
+│   └── Queue.cpp
+│   └── Stack.cpp
+├── tests/                 # Test cases
+│   └── test_ArrayList.cpp
+│   └── test_Queue.cpp
+│   └── test_Stack.cpp
+└── README.md              # Project documentation 
+
+
+### Java
+java/
+├── src/                   # Source code
+│   └── ArrayList.java
+│   └── BinarySearchTree.java
+│   └── Stack.java
+├── tests/                 # Test cases
+│   └── ArrayListTest.java
+│   └── BinarySearchTreeTest.java
+│   └── StackTest.java
+└── README.md              # Project documentation
 ```
 
 ---
