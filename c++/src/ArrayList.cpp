@@ -1,4 +1,4 @@
-#include "ArrayList.h"
+#include "../include/ArrayList.h"
 
 //this arraylist is initialized with a default capacity of 10, doubles when full, halves when less than 25% full
 //capacity is never less than 10
