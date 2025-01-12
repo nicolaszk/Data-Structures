@@ -10,6 +10,7 @@ The available data structures for now are (work in progress):
 in C:
 ```bash
 ./ArrayList
+./Stack
 ```
 
 in C++:
@@ -34,7 +35,7 @@ in Java:
 If you'd prefer to compile the code on your own, follow these steps:
 
 ### C
-1. Open a terminal in the project directory.
+1. Open a terminal in the C directory.
 2. Run the following command:
 
 ```bash
@@ -47,28 +48,41 @@ gcc -Iinclude src/IntegerArrayList.c tests/test_IntegerArrayList.c -o ArrayList
 ./ArrayList
 ```
 
-### C++
+(replace every occurence of "ArrayList" with the name of the data structure you want to compile and run)
 
+### C++
+1. Open a terminal in the C++ directory.
+2. Run the following command:
 ```bash
 g++ -std=c++17 -o ArrayList tests/test_ArrayList.cpp src/ArrayList.cpp -I include/
-g++ -std=c++17 -o Queue tests/test_Queue.cpp src/Queue.cpp -I include/
-g++ -std=c++17 -o Stack tests/test_Stack.cpp src/Stack.cpp -I include/
-g++ -std=c++17 -o BinarySearchTree tests/test_BinarySearchTree.cpp src/BinarySearchTree.cpp -I include/
 ```
 
+3. Once compiled, execute the program:
+```bash
+./ArrayList
+```
+(replace every occurence of "ArrayList" with the name of the data structure you want to compile and run)
+
+
 ### Java    
-for java, you should go to the java folder and compile the code with:
+1. Open a terminal in the java directory.
+2. Run the following command:
 
 ```bash
 javac -d . src/*.java tests/*.java
 ```
 
-then run the program you wish (in the java directory).
-for example:
+or, for compiling and running a specific test:
+
+```bash
+javac -d . src/ArrayList.java tests/test_ArrayList.java
+```
+
+3. Run the following command:
 ```bash
 java ArrayListTest
 ```
-
+(replace every occurence of "ArrayList" with the name of the data structure you want to run)
 ---
 
 ## 📂 Project Structure
@@ -78,10 +92,13 @@ java ArrayListTest
 C/
 ├── include/               # Header files
 │   └── IntegerArrayList.h
+│   └── IntegerStack.h
 ├── src/                   # Source code
 │   └── IntegerArrayList.c
+│   └── IntegerStack.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
+│   └── test_IntegerStack.c
 └── README.md              # Project documentation 
 ```
 ```
@@ -98,7 +115,7 @@ C++/
 │   └── Stack.cpp
 │   └── BinarySearchTree.cpp
 ├── tests/                 # Test cases
-── test_ArrayList.cpp
+│   └── test_ArrayList.cpp
 │   └── test_Queue.cpp
 │   └── test_Stack.cpp
 │   └── test_BinarySearchTree.cpp
