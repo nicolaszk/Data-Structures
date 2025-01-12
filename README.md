@@ -17,6 +17,7 @@ in C++:
 ./ArrayList
 ./Queue
 ./Stack
+./BinarySearchTree
 ```
 
 in Java:
@@ -50,6 +51,9 @@ gcc -Iinclude src/IntegerArrayList.c tests/test_IntegerArrayList.c -o ArrayList
 
 ```bash
 g++ -std=c++17 -o ArrayList tests/test_ArrayList.cpp src/ArrayList.cpp -I include/
+g++ -std=c++17 -o Queue tests/test_Queue.cpp src/Queue.cpp -I include/
+g++ -std=c++17 -o Stack tests/test_Stack.cpp src/Stack.cpp -I include/
+g++ -std=c++17 -o BinarySearchTree tests/test_BinarySearchTree.cpp src/BinarySearchTree.cpp -I include/
 ```
 
 ### Java    
@@ -59,7 +63,7 @@ for java, you should go to the java folder and compile the code with:
 javac -d . src/*.java tests/*.java
 ```
 
-then run the program you wish.
+then run the program you wish (in the java directory).
 for example:
 ```bash
 java ArrayListTest
@@ -87,14 +91,17 @@ C++/
 │   └── ArrayList.h
 │   └── Queue.h
 │   └── Stack.h
+│   └── BinarySearchTree.h
 ├── src/                   # Source code
 │   └── ArrayList.cpp
 │   └── Queue.cpp
 │   └── Stack.cpp
+│   └── BinarySearchTree.cpp
 ├── tests/                 # Test cases
 ── test_ArrayList.cpp
 │   └── test_Queue.cpp
 │   └── test_Stack.cpp
+│   └── test_BinarySearchTree.cpp
 └── README.md              # Project documentation 
 ```
 ```
