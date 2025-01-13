@@ -1,24 +1,20 @@
-
-
 public class QueueTest{
     public static void main(String[] args){
-        Queue queue = new Queue();
-        for(int i = 0; i < 50; i++){ // testing pushing and resizing (growing)
-            queue.enqueue(i);
-          
+        Queue<Integer> q = new Queue();
+        for(int i = 0; i < 50; i++){
+            q.enqueue(i);
             if(i % 10 == 0){
-                System.out.println("capacity of queue: " + queue.capacity());
+                System.out.println("queue capacity: " + q.getCapacity());
             }
         }
-        queue.printQueue();
-        System.out.println(queue.peek()); // peeking 
+        System.out.println("testing peek:" + q.peek());
+        for(int i = 49; i >= 0; i--){
+            q.dequeue();
+            if(i % 10 == 0){
+                System.out.println("queue capacity: "+ q.getCapacity());
+            }
+        }
+        System.out.println("end of testing");
 
-        for(int i = 49; i >= 0; i--){ // testing popping and resizing (shrinking)
-            queue.dequeue();
-          
-            if(i % 10 == 0){
-                System.out.println("capacity of queue: " + queue.capacity());
-            }
-        }
     }
 }

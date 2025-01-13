@@ -1,96 +1,95 @@
-public class Queue {
-    private int[] Queue;
+public class Queue <E>{
+
+    private Object[] data;
     private int size;
+    private int capacity;
     private int front;
     private int rear;
-    private final int default_capacity = 10;
-    public Queue() {
-        this.size = 0;
-        this.Queue = new int[default_capacity];
-        this.front = 0;
-        this.rear = 0;
-    }   
 
-    public void enqueue(int value){
-        if (size == Queue.length) {
+    public Queue(){
+        data = new Object[10];
+        rear = -1;
+        front = -1;
+        capacity = 10;
+        size = 0;
+    }
+
+    public void enqueue(E value){
+        if(size == 0){
+            rear = 0;
+            front = 0;
+        }
+        if(size == capacity){
             resize();
         }
-        if (isEmpty()) {
-            front = rear = 0;
-        } else {
-            rear = (rear + 1) % Queue.length;
-        }
-        Queue[rear] = value;
+        data[rear] = value;
+        rear = (rear+1) % capacity;
         size++;
     }
-
-    public int dequeue(){
-        if (isEmpty()) {
-            throw new IllegalStateException("A fila está vazia");
+    @SuppressWarnings("unchecked")
+    public E dequeue(){
+        if(size == 0){
+            throw new IndexOutOfBoundsException("The queue is empty");
         }
-        
-        int value = Queue[rear];
-        rear = (rear + 1) % Queue.length; // Circular wrap-around
+        if(size < capacity/4){
+            resize();
+        }
+        Object value = data[front];
+        front = (front + 1) % capacity;
         size--;
-        resize();
-        return value;
+        return (E) value;
+    }
+    @SuppressWarnings("unchecked")
+    public E peek(){
+        if(size == 0){
+            throw new IndexOutOfBoundsException("The queue is empty");
+        }
+        return (E) data[front];
     }
     public void resize(){
-        if(size == Queue.length) {
-            int[] newQueue = new int[Queue.length * 2];
-            for(int i = 0; i < size; i++) {
-                newQueue[i] = Queue[(front + i) % Queue.length];
+        if(size == capacity){
+            Object[] newData = new Object[capacity*2];
+            for(int i = 0; i < size; i++){
+                int index = (front + i) % capacity;
+                newData[i] = data[index];
             }
+            data = newData;
+            capacity = capacity*2;
             front = 0;
             rear = size - 1;
-            Queue = newQueue;
-        }
-        else if(size < Queue.length / 4 && Queue.length > default_capacity) {
-            int[] newQueue = new int[Queue.length / 2];
-            for(int i = 0; i < size; i++) {
-                newQueue[i] = Queue[(front + i) % Queue.length];
-            }
-            front = 0;
-            rear = size - 1;
-            Queue = newQueue;
-        }
-    }
 
-    public boolean isEmpty(){
-        return size == 0;
+        }
+        if(size < capacity/4 && capacity > 10){
+            Object[] newData = new Object[capacity/2];
+            for(int i = 0; i < size; i++){
+                int index = (front + i) % capacity;
+                newData[i] = data[index];
+            }
+            data = newData;
+            capacity = capacity/2;
+            front = 0;
+            rear = size - 1;
+        }
+
+
     }
-    public int size(){
+    public int getCapacity(){
+        return capacity;
+
+    }
+    public int getSize(){
         return size;
     }
-    public int capacity(){
-        return Queue.length;
+    public boolean isEmpty(){
+        return size == 0; 
     }
-    public int peek(){
-        return Queue[front];
-    }
-    public int front(){
-        return front;
-    }
-    public int rear(){
-        return rear;
-    }
-    public boolean contains(int value){
-        for(int i = 0; i < size; i++) {
-            if(Queue[rear + i] == value) {
+    public boolean contains(E value){
+        for(int i = 0; i < size; i++){
+            int index = (front + i) % capacity;
+            if(data[index].equals(value)){
                 return true;
             }
         }
         return false;
-    }
-    public void printQueue(){
-        System.out.print("[");
-        for(int i = 0; i < size; i++) {
-            if(i == size - 1) {
-                System.out.print(Queue[front + i]);
-                break;
-            }
-            System.out.print(Queue[front + i] + ", ");
-        }
-        System.out.println("]");
     }
 }
