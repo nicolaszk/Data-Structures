@@ -29,6 +29,7 @@ in Java:
 ./BinarySearchTreeTest
 ./StackTest
 ./QueueTest
+./MinHeapTest
 ```
 
 ---
@@ -138,11 +139,13 @@ java/
 │   └── BinarySearchTree.java
 │   └── Stack.java
 │   └── Queue.java
+│   └── MinHeap.java
 ├── tests/                 # Test cases
 │   └── ArrayListTest.java
 │   └── BinarySearchTreeTest.java
 │   └── StackTest.java
 │   └── QueueTest.java
+│   └── MinHeapTest.java
 └── README.md              # Project documentation
 ```
 
