@@ -11,6 +11,8 @@ in C:
 ```bash
 ./ArrayList
 ./Stack
+./Queue
+./BST
 ```
 
 in C++:
@@ -26,6 +28,7 @@ in Java:
 ./ArrayListTest
 ./BinarySearchTreeTest
 ./StackTest
+./QueueTest
 ```
 
 ---
@@ -93,12 +96,18 @@ C/
 ├── include/               # Header files
 │   └── IntegerArrayList.h
 │   └── IntegerStack.h
+│   └── IntegerQueue.h
+│   └── BinarySearchTree.h
 ├── src/                   # Source code
 │   └── IntegerArrayList.c
 │   └── IntegerStack.c
+│   └── IntegerQueue.c
+│   └── BinarySearchTree.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
 │   └── test_IntegerStack.c
+│   └── test_IntegerQueue.c
+│   └── test_BST.c
 └── README.md              # Project documentation 
 ```
 ```
@@ -128,10 +137,12 @@ java/
 │   └── ArrayList.java
 │   └── BinarySearchTree.java
 │   └── Stack.java
+│   └── Queue.java
 ├── tests/                 # Test cases
 │   └── ArrayListTest.java
 │   └── BinarySearchTreeTest.java
 │   └── StackTest.java
+│   └── QueueTest.java
 └── README.md              # Project documentation
 ```
 
