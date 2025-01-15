@@ -13,6 +13,7 @@ in C:
 ./Stack
 ./Queue
 ./BST
+./MinHeap
 ```
 
 in C++:
@@ -99,16 +100,19 @@ C/
 │   └── IntegerStack.h
 │   └── IntegerQueue.h
 │   └── BinarySearchTree.h
+│   └── MinHeap.h
 ├── src/                   # Source code
 │   └── IntegerArrayList.c
 │   └── IntegerStack.c
 │   └── IntegerQueue.c
 │   └── BinarySearchTree.c
+│   └── MinHeap.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
 │   └── test_IntegerStack.c
 │   └── test_IntegerQueue.c
 │   └── test_BST.c
+│   └── test_MinHeap.c
 └── README.md              # Project documentation 
 ```
 ```
