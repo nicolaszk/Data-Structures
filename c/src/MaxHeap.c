@@ -3,35 +3,34 @@
 #include <stdlib.h> // for malloc, realloc, free
 #include <stdbool.h> // for bool
 #include <math.h> // for pow
-#include "../include/MinHeap.h"
+#include "../include/MaxHeap.h"
 #define INITIAL_CAPACITY 10
-struct MinHeap{
+struct MaxHeap{
     int* data;
     size_t size;
     size_t capacity;
 };
 // function declarations
-
-MinHeap* createMinHeap();
-void destroyMinHeap(MinHeap* heap);
-bool insertMinHeap(MinHeap* heap, int value);
-void bubbleUp(MinHeap* heap, size_t index);
+MaxHeap* createMaxHeap();
+void destroyMaxHeap(MaxHeap* heap);
+bool insertMaxHeap(MaxHeap* heap, int value);
+void bubbleUp(MaxHeap* heap, size_t index);
 size_t parent_index(size_t index);
-void swap(MinHeap* heap, size_t index1, size_t index2);
-void resize(MinHeap* heap);
-int pollMinHeap(MinHeap* heap);
-void bubbleDown(MinHeap* heap, size_t index);
+void swap(MaxHeap* heap, size_t index1, size_t index2);
+void resize(MaxHeap* heap);
+int pollMaxHeap(MaxHeap* heap);
+void bubbleDown(MaxHeap* heap, size_t index);
 size_t left_index(size_t index);
 size_t right_index(size_t index);
-bool isEmptyMinHeap(const MinHeap* heap);
-bool changeValueMinHeap(MinHeap* heap, int old_value, int new_value);
-size_t capacityMinHeap(const MinHeap* heap);
-size_t sizeMinHeap(const MinHeap* heap);
-void printMinHeap(const MinHeap* heap);
+bool isEmptyMaxHeap(const MaxHeap* heap);
+bool changeValueMaxHeap(MaxHeap* heap, int old_value, int new_value);
+size_t capacityMaxHeap(const MaxHeap* heap);
+size_t sizeMaxHeap(const MaxHeap* heap); 
+void printMaxHeap(const MaxHeap* heap);
 
 // function definitions
-MinHeap* createMinHeap(){
-    MinHeap* heap = malloc(sizeof(MinHeap));
+MaxHeap* createMaxHeap(){
+    MaxHeap* heap = malloc(sizeof(MaxHeap));
     if(!heap){
         fprintf(stderr, "Memory allocation error");
         return NULL;
@@ -46,8 +45,8 @@ MinHeap* createMinHeap(){
     heap -> capacity = INITIAL_CAPACITY;
     return heap;
 }
-bool removeMinHeap(MinHeap* heap, int value){
-    if(isEmptyMinHeap(heap)){
+bool removeMaxHeap(MaxHeap* heap, int value){
+    if(isEmptyMaxHeap(heap)){
         fprintf(stderr, "head is empty");
         return false;
     }
@@ -61,7 +60,7 @@ bool removeMinHeap(MinHeap* heap, int value){
     }
     return false;
 }
-void destroyMinHeap(MinHeap* heap){
+void destroyMaxHeap(MaxHeap* heap){
     if(heap){
         if(heap -> data){
             free(heap -> data);
@@ -71,7 +70,7 @@ void destroyMinHeap(MinHeap* heap){
     return;
 }
 
-bool insertMinHeap(MinHeap* heap, int value){
+bool insertMaxHeap(MaxHeap* heap, int value){
     if(heap -> size == heap -> capacity){
         resize(heap);
     }
@@ -81,9 +80,9 @@ bool insertMinHeap(MinHeap* heap, int value){
     return true;
     }
 
-void bubbleUp(MinHeap* heap, size_t index){
+void bubbleUp(MaxHeap* heap, size_t index){
     size_t parent = parent_index(index);
-    if(index > 0 && heap -> data[index] < heap -> data[parent]){
+    if(index > 0 && heap -> data[index] > heap -> data[parent]){
         swap(heap, index, parent);
         bubbleUp(heap, parent);
     }
@@ -94,13 +93,13 @@ size_t parent_index(size_t index){
     return (index-1) / 2;
 }
 
-void swap(MinHeap* heap, size_t index1, size_t index2){
+void swap(MaxHeap* heap, size_t index1, size_t index2){
     int temp = heap -> data[index1];
     heap -> data[index1] = heap -> data[index2];
     heap -> data[index2] = temp;
 }
 
-void resize(MinHeap* heap){
+void resize(MaxHeap* heap){
     if(heap -> size == heap -> capacity){
         // double capacity
         heap -> capacity *= 2;
@@ -122,7 +121,7 @@ void resize(MinHeap* heap){
     return;
 }
 
-int pollMinHeap(MinHeap* heap){
+int pollMaxHeap(MaxHeap* heap){
     if(heap ->size == 0){
         fprintf(stderr, "heap is empty");
         return -1;
@@ -134,19 +133,19 @@ int pollMinHeap(MinHeap* heap){
     return value;
 }
 
-void bubbleDown(MinHeap* heap, size_t index){
+void bubbleDown(MaxHeap* heap, size_t index){
     size_t left = left_index(index);
     size_t right = right_index(index);
-    size_t smallest = index;
+    size_t largest = index;
     
-    if (left < heap->size && heap->data[left] < heap->data[smallest])
-        smallest = left;
-    if (right < heap->size && heap->data[right] < heap->data[smallest])
-        smallest = right;
+    if (left < heap->size && heap->data[left] > heap->data[largest])
+        largest = left;
+    if (right < heap->size && heap->data[right] > heap->data[largest])
+        largest = right;
         
-    if (smallest != index) {
-        swap(heap, index, smallest);
-        bubbleDown(heap, smallest);
+    if (largest != index) {
+        swap(heap, index, largest);
+        bubbleDown(heap, largest);
     }
 }
 
@@ -158,18 +157,18 @@ size_t right_index(size_t index){
     return 2* index + 2;
 }
 
-bool isEmptyMinHeap(const MinHeap* heap){
+bool isEmptyMaxHeap(const MaxHeap* heap){
     return heap -> size == 0;
 }
 
-bool changeValueMinHeap(MinHeap* heap, int old_value, int new_value){
+bool changeValueMaxHeap(MaxHeap* heap, int old_value, int new_value){
     if(old_value == new_value){
         return false;
     }
     for(size_t i = 0; i < heap -> size; i++){
         if(heap -> data[i] == old_value){
             heap -> data[i] = new_value;
-            if(new_value > old_value){
+            if(new_value < old_value){
                 bubbleDown(heap, i);
             } else {
                 bubbleUp(heap, i);
@@ -181,15 +180,15 @@ bool changeValueMinHeap(MinHeap* heap, int old_value, int new_value){
     return false;
 }
 
-size_t capacityMinHeap(const MinHeap* heap){
+size_t capacityMaxHeap(const MaxHeap* heap){
     return heap -> capacity;
 }
 
-size_t sizeMinHeap(const MinHeap* heap){
+size_t sizeMaxHeap(const MaxHeap* heap){
     return heap -> size;
 }
 
-void printMinHeap(const MinHeap* heap){
+void printMaxHeap(const MaxHeap* heap){
     printf("-----heap-----\n");
     int level = 0;
     for(size_t i = 0; i < heap -> size; i++){

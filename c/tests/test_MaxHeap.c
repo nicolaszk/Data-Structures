@@ -1,9 +1,9 @@
-#include <stdio.h>
+    #include <stdio.h>
 #include <stdlib.h>
-#include "../include/MinHeap.h"
+#include "../include/MaxHeap.h"
 
 int main(){
-    MinHeap* heap = createMinHeap();
+    MaxHeap* heap = createMaxHeap();
     while(true){
         printf("1. Insert\n2. Remove\n3. Poll\n4. Change Value\n5. Print\n6. Exit\n");
         int choice;
@@ -14,13 +14,13 @@ int main(){
                 value = 0;
                 printf("Enter value to insert: ");
                 scanf("%d", &value);
-                insertMinHeap(heap, value);
+                insertMaxHeap(heap, value);
                 break;
             case 2:
                 value = 0;
                 printf("Enter value to remove: ");
                 scanf("%d", &value);
-                if(removeMinHeap(heap, value)){
+                if(removeMaxHeap(heap, value)){
                     printf("Value removed\n");
                 }
                 else{
@@ -28,7 +28,7 @@ int main(){
                 }
                 break;
             case 3:
-            printf("Value polled: %d\n", pollMinHeap(heap));
+            printf("Value polled: %d\n", pollMaxHeap(heap));
             break;
             case 4:
                 value = 0;
@@ -37,13 +37,13 @@ int main(){
                 printf("Enter new value: ");
                 int new_value = 0;
                 scanf("%d", &new_value);
-                changeValueMinHeap(heap, value, new_value);
+                changeValueMaxHeap(heap, value, new_value);
                 break;
             case 5:
-                printMinHeap(heap);
+                printMaxHeap(heap);
                 break;
             case 6: 
-                destroyMinHeap(heap);
+                destroyMaxHeap(heap);
                 printf("heap destroyed, end of program\n");
                 return 0;
             default:

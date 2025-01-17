@@ -14,6 +14,7 @@ in C:
 ./Queue
 ./BST
 ./MinHeap
+./MaxHeap
 ```
 
 in C++:
@@ -102,18 +103,21 @@ C/
 │   └── IntegerQueue.h
 │   └── BinarySearchTree.h
 │   └── MinHeap.h
+│   └── MaxHeap.h
 ├── src/                   # Source code
 │   └── IntegerArrayList.c
 │   └── IntegerStack.c
 │   └── IntegerQueue.c
 │   └── BinarySearchTree.c
 │   └── MinHeap.c
+│   └── MaxHeap.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
 │   └── test_IntegerStack.c
 │   └── test_IntegerQueue.c
 │   └── test_BST.c
 │   └── test_MinHeap.c
+│   └── test_MaxHeap.c
 └── README.md              # Project documentation 
 ```
 ```
