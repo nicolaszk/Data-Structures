@@ -1,61 +1,60 @@
-#include "../include/MinHeap.h"
+#include "../include/MaxHeap.h"
 #include <iostream>
-
 // need to add changeValue function and remove function
 template <typename T>
-MinHeap<T>::MinHeap() : size(0), capacity(10){ // constructor
+MaxHeap<T>::MaxHeap() : size(0), capacity(10){ // constructor
 
-    data = new T[capacity];
+    T* data = new T[capacity];
 }
 
 template <typename T>
-MinHeap<T>::~MinHeap(){ // destructor
+MaxHeap<T>::~MaxHeap(){ // destructor
     delete[] data;
 }
 
 template<typename T>
-int MinHeap<T>::parent(int index){
+int MaxHeap<T>::parent(int index){
     return (index - 1) / 2;
 }
 
 template<typename T>
-int MinHeap<T>::leftChild(int index){
+int MaxHeap<T>::leftChild(int index){
     return 2*index + 1;
 }
 
 template<typename T>
-int MinHeap<T>::rightChild(int index){
+int MaxHeap<T>::rightChild(int index){
     return 2*index + 2;
 }
 
 template<typename T>
-int MinHeap<T>:: getSize(){
+int MaxHeap<T>:: getSize(){
     return size;
 }
 
 template<typename T>
-int MinHeap<T>:: getCapacity(){
+int MaxHeap<T>:: getCapacity(){
     return capacity;
 }
 
 template<typename T>
-bool MinHeap<T>::isEmpty(){
+bool MaxHeap<T>::isEmpty(){
     return size == 0;
 }
 
 template<typename T>
-bool MinHeap<T>::isFull(){
+bool MaxHeap<T>::isFull(){
     return size == capacity;
 }
 
 template<typename T>
-void MinHeap<T>::clear(){
+void MaxHeap<T>::clear(){
     size = 0;
 }
 
 
 template<typename T>
-void MinHeap<T>::resize(){
+void MaxHeap<T>::resize(){
     if(isFull()){
         capacity *= 2;
         T* newData = new T[capacity];
@@ -77,14 +76,14 @@ void MinHeap<T>::resize(){
 }
 
 template<typename T>
-void MinHeap<T>::swap(int i, int j){
+void MaxHeap<T>::swap(int i, int j){
     T temp = data[i];
     data[i] = data[j];
     data[j] = temp;
 }
 
 template<typename T>
-void MinHeap<T>::insert(T value){
+void MaxHeap<T>::insert(T value){
     if(isFull()){
         resize();
     }
@@ -94,45 +93,45 @@ void MinHeap<T>::insert(T value){
 }
 
 template<typename T>
-T MinHeap<T>::extractMin(){
+T MaxHeap<T>::extractMax(){
     if(isEmpty()){
         throw std::runtime_error("Heap is empty");
     }
-    T min = data[0];
+    T max = data[0];
     data[0] = data[size - 1];
     size--;
     heapifyDown(0);
-    return min;
+    return max;
 }
 
 template<typename T>
-void MinHeap<T>::heapifyUp(int index){
-    while(index > 0 && data[parent(index)] > data[index]){ // if the parent is greater than the child, swap them
+void MaxHeap<T>::heapifyUp(int index){
+    while(index > 0 && data[parent(index)] < data[index]){ // if the parent is less than the child, swap them
         swap(parent(index), index); // swap the parent and child
         index = parent(index); // update the index to the parent's index
     }
 }
 
 template<typename T>
-void MinHeap<T>::heapifyDown(int index){
-    // get left and right child, find smallest and swap with parent;
+void MaxHeap<T>::heapifyDown(int index){
+    // get left and right child, find largest and swap with parent;
     int left = leftChild(index);
     int right = rightChild(index);
-    int smallest = index;
-    if(left < size && data[left] < data[smallest]){ // if exists and is smaller
-        smallest = left;
+    int largest = index;
+    if(left < size && data[left] > data[largest]){ // if exists and is smaller
+        largest = left;
     }
-    if(right < size && data[right] < data[smallest]){// if exists and is smaller
-        smallest = right;
+    if(right < size && data[right] > data[largest]){// if exists and is smaller
+        largest = right;
     }
-    if(smallest != index){ // if the smallest is not the parent, swap them
-        swap(index, smallest); // swap the parent and smallest
-        heapifyDown(smallest); // continue heapifying down 
+    if(largest != index){ // if the largest is not the parent, swap them
+        swap(index, largest); // swap the parent and largest
+        heapifyDown(largest); // continue heapifying down 
     }
 }
 
 template<typename T>
-void MinHeap<T>::printHeap(){
+void MaxHeap<T>::printHeap(){
     int level = 0;
     for(int i = 0; i < size; i++){
         if(i == (1 << level) - 1){
@@ -145,18 +144,24 @@ void MinHeap<T>::printHeap(){
 }
 
 template<typename T>
-void MinHeap<T>::changeValue(T old_value, T new_value){
+void MaxHeap<T>::changeValue(T old_value, T new_value){
+    int index = 0;
     for(int i = 0; i < size; i++){
         if(data[i] == old_value){
-            data[i] = new_value;
-            heapifyUp(i);
-            heapifyDown(i);
-            return;
+            index = i;
+            break;
         }
     }
-    throw std::runtime_error("Value not found");
+    data[index] = new_value;
+    if(new_value > data[parent(index)]){
+        heapifyUp(index);
+    }
+    else if(new_value < data[leftChild(index)] || new_value < data[rightChild(index)]){
+        heapifyDown(index);
+    }
 }
-template class MinHeap<int>;
-template class MinHeap<double>;
-template class MinHeap<char>;
-template class MinHeap<std::string>;
+
+template class MaxHeap<int>;
+template class MaxHeap<double>;
+template class MaxHeap<char>;
+template class MaxHeap<std::string>;

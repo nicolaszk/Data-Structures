@@ -26,6 +26,8 @@ class MinHeap{
         int getSize();
         int getCapacity();
         void printHeap();
+        void changeValue(T old_value, T new_value);
+        // could add: contains, peek, remove, etc.
         
 };
 

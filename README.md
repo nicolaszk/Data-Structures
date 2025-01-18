@@ -24,6 +24,7 @@ in C++:
 ./Stack
 ./BinarySearchTree
 ./MinHeap
+./MaxHeap
 ```
 
 in Java:
@@ -129,18 +130,21 @@ C++/
 │   └── Stack.h
 │   └── BinarySearchTree.h
 │   └── MinHeap.h
+│   └── MaxHeap.h
 ├── src/                   # Source code
 │   └── ArrayList.cpp
 │   └── Queue.cpp
 │   └── Stack.cpp
 │   └── BinarySearchTree.cpp
 │   └── MinHeap.cpp
+│   └── MaxHeap.cpp
 ├── tests/                 # Test cases
 │   └── test_ArrayList.cpp
 │   └── test_Queue.cpp
 │   └── test_Stack.cpp
 │   └── test_BinarySearchTree.cpp
 │   └── test_MinHeap.cpp
+│   └── test_MaxHeap.cpp
 └── README.md              # Project documentation 
 ```
 ```

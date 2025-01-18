@@ -1,11 +1,11 @@
-#include "../include/MinHeap.h"
+#include "../include/MaxHeap.h"
 #include <iostream>
 
 int main(){
-    MinHeap<int> heap;
+    MaxHeap<int> heap;
     while(true){
         std::cout << "1. Insert" << std::endl;
-        std::cout << "2. Extract Min" << std::endl;
+        std::cout << "2. Extract Max" << std::endl;
         std::cout << "3. Print Heap" << std::endl;
         std::cout << "4. Change Value" << std::endl;
         std::cout << "5. Exit" << std::endl;
@@ -18,7 +18,7 @@ int main(){
             heap.insert(value);
         }
         else if(choice == 2){
-            std::cout << "Extracting min: " << heap.extractMin() << std::endl;
+            std::cout << "Extracting max: " << heap.extractMax() << std::endl;
         }
         else if(choice == 3){
             heap.printHeap();
