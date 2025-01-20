@@ -92,4 +92,10 @@ public class Queue <E>{
         }
         return false;
     }
+    public void printQueue(){
+        for(int i = 0; i < size; i++){
+            int index = (front + i) % capacity;
+            System.out.println(data[index]);
+        }
+    }
 }

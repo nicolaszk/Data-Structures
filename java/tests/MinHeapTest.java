@@ -5,12 +5,11 @@ public class MinHeapTest{
         Scanner sc = new Scanner(System.in);
         MinHeap minHeap = new MinHeap();
         while(true){
-            System.out.println("1. Insert\n2.Delete\n3.Display\n4.Exit");
+            System.out.println("1. Insert\n2.Poll\n3.Display\n4.Exit");
             System.out.println("Enter your choice: ");
             int choice = 4;
             try{
                 choice = sc.nextInt();
-
             }
             catch(Exception e){
                 System.out.println("Invalid input");
@@ -30,15 +29,7 @@ public class MinHeapTest{
                     }
                     break;
                 case 2: 
-                    System.out.println("Enter the element to delete: ");
-                    try{
-                        int element = sc.nextInt();
-                        minHeap.remove(element);
-                    }
-                    catch(Exception e){
-                        System.out.println("Invalid input");
-                        continue;
-                    }
+                    System.out.println("Polled element: " + minHeap.poll());
                     break;
                 case 3:
                     minHeap.printHeap();
