@@ -35,6 +35,7 @@ in Java:
 ./StackTest
 ./QueueTest
 ./MinHeapTest
+./MaxHeapTest
 ```
 
 ---
