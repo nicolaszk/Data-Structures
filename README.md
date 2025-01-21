@@ -15,6 +15,7 @@ in C:
 ./BST
 ./MinHeap
 ./MaxHeap
+./LinkedList
 ```
 
 in C++:
@@ -105,6 +106,7 @@ C/
 │   └── BinarySearchTree.h
 │   └── MinHeap.h
 │   └── MaxHeap.h
+│   └── LinkedList.h
 ├── src/                   # Source code
 │   └── IntegerArrayList.c
 │   └── IntegerStack.c
@@ -112,6 +114,7 @@ C/
 │   └── BinarySearchTree.c
 │   └── MinHeap.c
 │   └── MaxHeap.c
+│   └── LinkedList.c
 ├── tests/                 # Test cases
 │   └── test_IntegerArrayList.c
 │   └── test_IntegerStack.c
@@ -119,6 +122,7 @@ C/
 │   └── test_BST.c
 │   └── test_MinHeap.c
 │   └── test_MaxHeap.c
+│   └── test_LinkedList.c
 └── README.md              # Project documentation 
 ```
 ```
