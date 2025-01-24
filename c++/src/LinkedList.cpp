@@ -8,7 +8,7 @@ Node<T>::Node(T value) : data(value), next(nullptr){
 
 template<typename T>
 Node<T>::~Node(){
-    delete next;
+    next = nullptr;
 }
 
 template class Node<int>;
@@ -23,8 +23,12 @@ LinkedList<T>::LinkedList() : head(nullptr), tail(nullptr), size(0){
 
 template<typename T>
 LinkedList<T>::~LinkedList(){
-    delete head;
-    delete tail;
+    Node<T>* current = head;
+    while (current != nullptr) {
+        Node<T>* nextNode = current->next;
+        delete current;                   
+        current = nextNode;               
+    }
 }
 
 
@@ -45,16 +49,17 @@ bool LinkedList<T>::add(T value){
 
 template <typename T>
 bool LinkedList<T>::remove(T value) {
-    if (head == nullptr) return false; // List is empty
+    if (head == nullptr) return false; // list is empty
 
     // Handle head removal
     if (head->data == value) {
         Node<T>* temp = head;
-        head = head->next; // Move head to the next node
-        if (head == nullptr) {
-            tail = nullptr; // If head is now nullptr, the list is empty, so update tail
+        head = head->next; 
+        if (head == nullptr) { // if list ends up empty
+            tail = nullptr;   // update tail
         }
-        delete temp; // Free the memory of the removed node
+        temp->next = nullptr; // independently if its empty or not, not letting the old head point to the second node in the list
+        delete temp;          // delete node (if line above isnt correct, will cause segfault)
         size--;
         return true;
     }
@@ -71,7 +76,8 @@ bool LinkedList<T>::remove(T value) {
                 tail = current;
             }
 
-            delete temp; // Free the memory of the removed node
+            temp->next = nullptr; // Disconnect the node from the list
+            delete temp;          // Delete the node safely
             size--;
             return true;
         }
@@ -80,6 +86,7 @@ bool LinkedList<T>::remove(T value) {
 
     return false; // Value not found
 }
+
 template<typename T>
 void LinkedList<T>::print(){
     Node<T>* current = head;
