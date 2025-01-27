@@ -31,6 +31,20 @@ public class UndirectedGraph<T>{
             return false;
         }
     }
+    public boolean removeVertex(T a){
+        // find its occurences on connection lists and then remove the vertex from the map
+        for(Set<T> s: graph.values()){
+            if(s.contains(a)){
+                s.remove(a);
+            }
+        }
+        if(graph.containsKey(a)){
+            graph.remove(a);
+            return true;
+        }
+        
+        return false;
+    }
     public void printGraph() {
     for (Map.Entry<T, Set<T>> entry : graph.entrySet()) {
         T vertex = entry.getKey(); // Current vertex
