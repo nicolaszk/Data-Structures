@@ -36,6 +36,9 @@ in Java:
 ./QueueTest
 ./MinHeapTest
 ./MaxHeapTest
+./GenericTreeTest
+./UndirectedGraphTest
+./LinkedListTest
 ```
 
 ---
@@ -161,12 +164,18 @@ java/
 │   └── Stack.java
 │   └── Queue.java
 │   └── MinHeap.java
+│   └── GeneralTree.java
+│   └── LinkedList.java 
+│   └── UndirectedTreeTest.java
 ├── tests/                 # Test cases
 │   └── ArrayListTest.java
 │   └── BinarySearchTreeTest.java
 │   └── StackTest.java
 │   └── QueueTest.java
 │   └── MinHeapTest.java
+│   └── GenericTreeTest.java
+│   └── LinkedListTest.java 
+│   └── UndirectedTreeTest.java
 └── README.md              # Project documentation
 ```
 
